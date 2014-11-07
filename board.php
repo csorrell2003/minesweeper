@@ -17,7 +17,7 @@ class Board{
     	$this->setMines();
 	}
 	
-	public function prepBoard(){
+	private function prepBoard(){
 		for ($row=1; $row <= $this->rows; $row++){
     		for ($col=1; $col <= $this->cols; $col++)
     		{
@@ -26,7 +26,7 @@ class Board{
 		}
 	}
 	
-	public function setMines(){
+	private function setMines(){
 		
 		for($m = 0; $m < $this->mines; $m++){
 			do{ //mines cannot be set more than once on the same square
@@ -81,7 +81,7 @@ class Board{
 		$this->surrounding_mines($array,$row,$col);
 	}
 	
-	public function surrounding_mines($array,$row,$col){
+	private function surrounding_mines($array,$row,$col){
 		$square = $this->board[$row][$col];
 		foreach($array as $value){
 			if($value->is_a_mine == TRUE){
