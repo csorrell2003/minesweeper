@@ -4,7 +4,8 @@ $( document ).ready(function() {
 	var cells = $( "#grid td" ).length;
 	var cols = cells / rows;
 	
-  $(".tile").click(function(){
+  $(".tile").click(function(){	
+	
 	 var Stack = [];	  
 	 reveal(this.id);
 	 
@@ -71,6 +72,10 @@ $( document ).ready(function() {
 	   $("div#col_"+tile).css("background-color","red");
 	   $("img.mine").addClass("reveal");	   
    }
+   
+  checkWin();
+   
+   
  }); 
  
   //Disable contextmenu on right click 
@@ -95,7 +100,20 @@ $( document ).ready(function() {
       return false; 
     } 
     return true; 
-  }); 
+  }); 	
 	
 });
 
+ function checkWin(){
+	   var win = true;
+	        $('img').each(function() {
+	            if (!$(this).hasClass('reveal')){
+					if(!$(this).hasClass('mine')){
+	                	win = false;
+					}
+	            }
+	            
+	        });
+	        if (win == true)
+	            alert('Winner!');
+   	}
